@@ -1,3 +1,7 @@
+/**
+ * Replace all contents of task_client.c with contents of this file
+*/
+
 #include <unistd.h>
 #include "task.h"
 
