@@ -1,5 +1,5 @@
+#include <unistd.h>
 #include "task.h"
-
 
 void
 task_1(char *host, CLIENT *clnt, int option)
@@ -18,7 +18,7 @@ task_1(char *host, CLIENT *clnt, int option)
 			clnt_perror (clnt, "call failed");
 		}
 
-		printf("%d doubled is %d", num, *result_1);
+		printf("%d doubled is %d\n", num, *result_1);
 	}else if (option == 2){
 		printf("Procedure Coming Soon");
 	}else if (option == 3){
@@ -44,16 +44,26 @@ main (int argc, char *argv[])
 	}
 	host = argv[1];
 
-	printf("Welcome. Which remote procedure to you wanna call?\n1. Doublify\n2. Procedure 2\n3. Procedure 3\n");
-	scanf("%d", &option);
-
 	clnt = clnt_create (host, TASK, TASK_VER, "udp");
 	if (clnt == NULL) {
 		clnt_pcreateerror (host);
 		exit (1);
 	}
 
-	task_1 (host, clnt, option);
+	printf("Welcome. Which remote procedure to you wanna call?\n");
+
+	while(1){
+		printf("\n1. Doublify\n2. Procedure 2\n3. Procedure 3\n4. Exit\n");
+		scanf("%d", &option);
+		if(option == 4){
+			printf("Exiting...\n");
+			sleep(1);
+			printf("Goodbye!\n");
+			break;
+		}else {
+			task_1 (host, clnt, option);
+		}
+	}
 
 	clnt_destroy (clnt);
 	exit (0);
