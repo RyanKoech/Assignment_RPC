@@ -1,1 +1,15 @@
 .vscode
+task_client
+task_client.c
+task_client.o
+task_clnt.c
+task_clnt.o
+task_server
+task_server.c
+task_server.o
+task_svc.c
+task_svc.o
+task_xdr.c
+task_xdr.o
+task.h
+Makefile.task
