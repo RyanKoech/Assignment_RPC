@@ -8,6 +8,8 @@ task_1(char *host, CLIENT *clnt, int option)
 	input1  doublify_1_arg;
 	float  *result_2;
 	input2  balance_1_arg;
+	to_string_res  *result_3;
+	input3  to_string_1_arg;
 
 	if(option == 1){
 		int num;
@@ -39,7 +41,19 @@ task_1(char *host, CLIENT *clnt, int option)
 
     printf("Your score is %f\n", *result_2);
 	}else if (option == 3){
-		printf("Procedure Coming Soon");
+		int num;
+
+		printf("Enter the integer for conversion:\n");
+		scanf("%d", &num);
+
+		to_string_1_arg.num = &num;
+
+		result_3 = to_string_1(&to_string_1_arg, clnt);
+		if (result_3 == (to_string_res *) NULL) {
+			clnt_perror (clnt, "call failed");
+		}
+
+		printf("The number %d to string is still %s\n", num, result_3->data);
 	}else{
 		printf("Unknown procedure call.");
 	}
