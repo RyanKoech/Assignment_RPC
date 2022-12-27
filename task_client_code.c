@@ -6,6 +6,8 @@ task_1(char *host, CLIENT *clnt, int option)
 {
 	int  *result_1;
 	input1  doublify_1_arg;
+	float  *result_2;
+	input2  balance_1_arg;
 
 	if(option == 1){
 		int num;
@@ -20,7 +22,22 @@ task_1(char *host, CLIENT *clnt, int option)
 
 		printf("%d doubled is %d\n", num, *result_1);
 	}else if (option == 2){
-		printf("Procedure Coming Soon");
+		int num;
+    char text[40];
+    printf("Enter username:\n");
+    scanf("%s", text);
+    printf("Enter your pin:\n");
+    scanf("%d", &num);
+
+    balance_1_arg.num = num;
+    balance_1_arg.text = text;
+
+    result_2 = balance_1(&balance_1_arg, clnt);
+    if (result_2 == (float *) NULL) {
+      clnt_perror (clnt, "call failed");
+    }
+
+    printf("Your score is %f\n", *result_2);
 	}else if (option == 3){
 		printf("Procedure Coming Soon");
 	}else{
@@ -53,7 +70,7 @@ main (int argc, char *argv[])
 	printf("Welcome. Which remote procedure to you wanna call?\n");
 
 	while(1){
-		printf("\n1. Doublify\n2. Procedure 2\n3. Procedure 3\n4. Exit\n");
+		printf("\n1. Doublify\n2. Get Account Balance\n3. Procedure 3\n4. Exit\n");
 		scanf("%d", &option);
 		if(option == 4){
 			printf("Exiting...\n");
