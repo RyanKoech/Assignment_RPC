@@ -88,7 +88,7 @@ main (int argc, char *argv[])
 	printf("Welcome. Which remote procedure to you wanna call?\n");
 
 	while(1){
-		printf("\n1. Doublify\n2. Get Account Balance\n3. Procedure 3\n4. Exit\n");
+		printf("\n1. Doublify\n2. Get Account Balance\n3. Integer to String\n4. Exit\n");
 		scanf("%d", &option);
 		if(option == 4){
 			printf("Exiting...\n");
