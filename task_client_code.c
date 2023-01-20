@@ -43,7 +43,7 @@ task_1(char *host, CLIENT *clnt, int option)
       clnt_perror (clnt, "call failed");
     }
 
-    printf("Your score is %f\n", *result_2);
+    printf("Your account balance is %f\n", *result_2);
 	}else if (option == 3){
 		int num;
 
